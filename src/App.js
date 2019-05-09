@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
+import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Header from './components/Header'
 
 class App extends Component {
   constructor(){
@@ -23,6 +25,11 @@ class App extends Component {
   render(){
     const { user } = this.state
 
+    const AbsoluteWrapper = styled.div`
+      position: absolute;
+      
+    `
+
     // build a fontawesome icon library
     library.add(
       fab, faGamepad,
@@ -31,15 +38,18 @@ class App extends Component {
       faLaptopCode, 
       faEnvelope, 
       faKey, 
-      faUserEdit 
+      faUserEdit,
+      faUserCircle,
+      faBars 
     )
 
     return (
-      <div className="App">
-        <header className="App-header">
-          
-        </header>
-      </div>
+      <AbsoluteWrapper className="App">
+        <Header user={user}></Header>
+
+
+        
+      </AbsoluteWrapper>
     )
   }
 }
