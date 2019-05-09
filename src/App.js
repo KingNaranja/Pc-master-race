@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fab, faGithubAlt, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Header from './components/Header'
@@ -40,7 +40,9 @@ class App extends Component {
       faKey, 
       faUserEdit,
       faUserCircle,
-      faBars 
+      faBars,
+      faGithubAlt,
+      faGithub 
     )
 
     return (
@@ -48,7 +50,7 @@ class App extends Component {
         <Header user={user}></Header>
 
 
-        
+
       </AbsoluteWrapper>
     )
   }

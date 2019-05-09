@@ -23,7 +23,8 @@ const MainHeader = styled.header`
     align-items: center;
     display: flex;
     flex-grow: 1;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding: 0 1em;
     .icon:hover {
     height: calc(100% + 50px);
     color: gold;
@@ -46,11 +47,14 @@ const MainHeader = styled.header`
 
 const Header = user  => (
   <MainHeader>
-    <img className='logo' src={logo} alt="PCMASTERRACE" />
+    <img className='logo' src={ logo } alt="PCMASTERRACE" />
 
     <nav>
+      <a href="https://github.com/KingNaranja">
+        <FontAwesomeIcon size='2x' className='icon' icon={[ 'fab', 'github' ]} />
+      </a>
       <FontAwesomeIcon size='2x' className='icon' icon='user-circle' />
-      <FontAwesomeIcon  id='test' size='2x' className='icon' icon='bars' />
+      <FontAwesomeIcon size='2x' className='icon' icon='bars' />
     </nav>
   </MainHeader>
 )
