@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -7,7 +7,7 @@ import { fab, faGithubAlt, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Header from './components/Header'
-
+import Home from './components/Home.js'
 
 class App extends Component {
   constructor(){
@@ -55,14 +55,19 @@ class App extends Component {
     )
 
     return (
-      <AbsoluteWrapper className="App">
-        <Header user={user} toggleSideNav={this.toggleSideNav} ></Header>
-        
-        <Main>
-          <p className="test">Attack on Titan Season 3 is better than Game of Thrones Season 8; Change my mind.</p>
-        </Main>
+      <Router>
+        <AbsoluteWrapper className="App">
+          <Header user={user} toggleSideNav={this.toggleSideNav} ></Header>
 
-      </AbsoluteWrapper>
+          <Main>
+            {/* Routes */}
+            <Switch>
+              <Route path="/" component={Home} />
+            </Switch>
+          </Main>
+
+        </AbsoluteWrapper>
+      </Router>
     )
   }
 }

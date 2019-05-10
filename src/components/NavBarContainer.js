@@ -8,12 +8,17 @@ export class NavBarContainer extends Component {
   constructor(){
     super()
     this.state = {
-      menuVisible : false
+      menuVisible : false,
+      animation: ''
     }
   }
   
-  toggleSideNav = () => this.setState({ menuVisible: !this.state.menuVisible })
-
+  toggleSideNav = () => {
+    this.setState({ menuVisible: !this.state.menuVisible })
+    this.state.menuVisible ?
+      this.setState({ animation : 'slide-right'}) :
+      this.setState({ animation : 'slide-left'})
+  }
   render() {
 
     const Nav = styled.nav`
@@ -40,7 +45,7 @@ export class NavBarContainer extends Component {
         <FontAwesomeIcon size='2x' className='icon' icon='user-circle' />
         <FontAwesomeIcon size='2x' className='icon' icon='bars' onClick={this.toggleSideNav}/>
         {
-          menuVisible && <SideNav/>
+          menuVisible && <SideNav toggleNav={this.toggleSideNav} />
         }
       </Nav>
     )
