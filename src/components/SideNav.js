@@ -61,6 +61,7 @@ const SideNav = props => {
         <Link to='/buildapc-sales' onClick={props.toggleNav}>
           <h2>PC Sales</h2>
         </Link>
+        <a href="https://teespring.com/stores/officialpcmr" target='_blank'>Store</a>
       </nav>
     </Menu>
   )
