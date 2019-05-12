@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab, faGithubAlt, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Header from './components/Header'
-import Home from './components/Home.js'
+import Home from './pages/Home.js'
 
 class App extends Component {
   constructor(){
@@ -35,8 +34,8 @@ class App extends Component {
     const Main = styled(AbsoluteWrapper)`
       margin-right: auto;
       margin-left:  auto;
-      max-width: 960px;
-      padding: 1em;
+      width: 100%;
+      /* padding: 1vw; */
     `
 
     // build a fontawesome icon library
@@ -62,7 +61,7 @@ class App extends Component {
           <Main>
             {/* Routes */}
             <Switch>
-              <Route path="/" component={Home} />
+              <Route  exact path="/" component={Home} />
             </Switch>
           </Main>
 
