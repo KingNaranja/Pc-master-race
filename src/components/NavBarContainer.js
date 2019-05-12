@@ -39,7 +39,7 @@ export class NavBarContainer extends Component {
 
     return (
       <Nav>
-        <a href="https://github.com/KingNaranja">
+        <a href="https://github.com/KingNaranja/pc-master-race">
           <FontAwesomeIcon size='2x' className='icon' icon={[ 'fab', 'github' ]} />
         </a>
         <FontAwesomeIcon size='2x' className='icon' icon='user-circle' />
