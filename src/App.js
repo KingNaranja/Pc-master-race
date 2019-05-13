@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <Router>
         <AbsoluteWrapper className="App">
-          <Header user={user} toggleSideNav={this.toggleSideNav} ></Header>
+          <Header></Header>
 
           <Main>
             {/* Routes */}
