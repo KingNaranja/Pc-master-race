@@ -4,19 +4,26 @@ import styled from 'styled-components'
 
 export const PageWrapper = styled.div`
   display: grid;
-  grid-template-rows: 25% 75%;
+  grid-template-rows: 75vw 75%;
   grid-column-gap: 1px;
   grid-row-gap: 1px;
   justify-items: stretch;
   align-items: stretch; 
-
+  @media screen and (min-width: 468px) {
+    grid-template-rows: 45vw 75%;
+    align-items: center;
+    
+    
+  }
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
-    align-content: space-between;
+    align-items: flex-start;
     justify-content: space-between;
   
   }
+  
+  
   
 
 `
