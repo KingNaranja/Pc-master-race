@@ -1,18 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Post() {
+const Post = props => {
 
   const PostCard = styled.div`
     margin: 1em;
     font-size: calc(12px + .5vh);
+    border-bottom: solid lightgrey 1px;
+    :hover h1 {
+      color: gold;
+    }
+
   `
+  const { title, body } = props
 
   return (
-    <PostCard className="test" >
-      <h1>Pokemon Crystal is the greatest pokemon game of all time</h1>
-      <h3>Change my mind.</h3>
-      <p>by KingNaranja</p>
+    <PostCard>
+      <h1>{ title }</h1>
+      <h3>{ body }</h3>
     </PostCard>
   )
 }
+
+export default Post

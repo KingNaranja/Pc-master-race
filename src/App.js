@@ -1,60 +1,62 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars, faTimes, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Home from './pages/Home.js'
+import { StateProvider } from './context/GlobalState'
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      user: null,
-      menuVisible: false
+const App = props => {
+  
+  const initialState = {
+    posts: []
+  }
+
+  const AbsoluteWrapper = styled.div`
+    position: absolute;
+    
+  `
+  // extend style from AbsoluteWrapper
+  const Main = styled(AbsoluteWrapper)`
+    margin-right: auto;
+    margin-left:  auto;
+    width: 100%;
+  `
+
+  // build a fontawesome icon library
+  library.add(
+    fab, faGamepad,
+    faDesktop, 
+    faLaptop, 
+    faLaptopCode, 
+    faEnvelope, 
+    faKey, 
+    faUserEdit,
+    faUserCircle,
+    faBars,
+    faGithubAlt,
+    faTimes,
+    faSpinner
+  )
+  // Main reducer runs everytime dispatch() is called   
+  const reducer = ( state, action ) => {
+    switch (action.type) {
+      case 'addPosts':
+       return {
+         ...state,
+         posts: action.payload
+       }
+      default: 
+       return state
     }
   }
 
-  setUser = user => this.setState({ user })
-
-  clearUser = () => this.setState({ user: null })
-
-  getUser = () => this.state.user
-
-  render(){
-    const { user } = this.state
-
-    const AbsoluteWrapper = styled.div`
-      position: absolute;
-      
-    `
-    // extend style from AbsoluteWrapper
-    const Main = styled(AbsoluteWrapper)`
-      margin-right: auto;
-      margin-left:  auto;
-      width: 100%;
-      /* padding: 1vw; */
-    `
-
-    // build a fontawesome icon library
-    library.add(
-      fab, faGamepad,
-      faDesktop, 
-      faLaptop, 
-      faLaptopCode, 
-      faEnvelope, 
-      faKey, 
-      faUserEdit,
-      faUserCircle,
-      faBars,
-      faGithubAlt,
-      faTimes 
-    )
-
-    return (
-      <Router>
+  return (
+    <Router>
+      <StateProvider initialState={ initialState } reducer={ reducer }>
         <AbsoluteWrapper className="App">
           <Header></Header>
 
@@ -64,11 +66,11 @@ class App extends Component {
               <Route  exact path="/" component={Home} />
             </Switch>
           </Main>
-
         </AbsoluteWrapper>
-      </Router>
-    )
-  }
+      </StateProvider>
+    </Router>
+  )
+  
 }
 
 export default App;
