@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faGamepad, faDesktop, faLaptop, faLaptopCode, faEnvelope, faKey, faUserEdit, faUserCircle, faBars, faTimes, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faBars, faTimes, faHeart } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Home from './pages/Home.js'
 import { StateProvider } from './context/GlobalState'
@@ -28,18 +28,12 @@ const App = props => {
 
   // build a fontawesome icon library
   library.add(
-    fab, faGamepad,
-    faDesktop, 
-    faLaptop, 
-    faLaptopCode, 
-    faEnvelope, 
-    faKey, 
-    faUserEdit,
+    fab,
     faUserCircle,
     faBars,
     faGithubAlt,
     faTimes,
-    faSpinner
+    faHeart
   )
   // Main reducer runs everytime dispatch() is called   
   const reducer = ( state, action ) => {

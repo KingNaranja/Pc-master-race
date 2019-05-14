@@ -30,7 +30,7 @@ const NavBarContainer = props  => {
       <a href="https://github.com/KingNaranja/pc-master-race">
         <FontAwesomeIcon size='2x' className='icon' icon={[ 'fab', 'github' ]} />
       </a>
-      <FontAwesomeIcon size='2x' className='icon' icon='user-circle' />
+      <FontAwesomeIcon size='2x' className='icon' icon='heart' />
       <FontAwesomeIcon size='2x' className='icon' icon='bars' onClick={toggleSideNav}/>
       {
         menuVisible && <SideNav toggleNav={toggleSideNav} />
