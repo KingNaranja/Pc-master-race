@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import styled from 'styled-components'
-import loading from './../images/loading.svg'
-import Post from './Post'
 import { useStateValue } from './../context/GlobalState'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// wait for PostList to load before rendering
+const PostList = lazy( () => import('./PostList'))
 
 function PostContainer() {
    
@@ -13,22 +14,25 @@ function PostContainer() {
     overflow-y: scroll;
     min-width: 40vw;
     height: 100%;
+    /* padding: 10vh; */
     .load {
       justify-self: center;
       align-self: center;
-      /* margin: 1em; */
+      margin: 1em;
       padding: 10vh;
     }
     @media screen and (min-width: 768px) {
-      max-width: 70vw;
-      .load { padding: 50vh; }
+      width: 70vw;
+      .load { 
+        height: 100%;
+        padding: 20vw; 
+      }
     }
 
 
   `
   const [ isLoading, setIsLoading ] = useState(true)
   const [ state, dispatch ] = useStateValue()
-  console.log(state)
 
   useEffect( () => {
     console.log('component did mount')
@@ -49,22 +53,46 @@ function PostContainer() {
     
   }, [dispatch])
 
-  useEffect( () => {
-    console.log('component did update')
+  
 
-  } )
+  const toggleFavorite = post => {
+    // check if post exists in favorites array
+    // store result as boolean
+    const postInFavorites = state.favorites.includes(post)
 
+    // dispatch add new favorite action
+    let actionObj = {
+      type: 'addFav',
+      payload: post
+    }
+    if ( postInFavorites ) {
+      console.log('remove fav')
+      // remove unfavorited post from array
+      const favoritesWithoutPost = state.favorites.filter( fav => fav.id !== post.id )
+      // dispatch updated favorites
+      actionObj = {
+        type: 'removeFav',
+        payload: favoritesWithoutPost
+      }
+    }
+    console.log(postInFavorites)
+    dispatch( actionObj )
+    
+  }
+
+  const loading = <FontAwesomeIcon className='load' icon='spinner' spin size='4x' />
 
   return (
     <Container >
-      {
-        isLoading && state ? 
-        <img  className='load' src={loading} alt="Loading..."/> :
-        state.posts.map( (post, index) => 
-          <Post key={index} title={post.title} body={post.body} />
-        )
-      }
+      <Suspense fallback={ loading } >
+          <PostList 
+            toggleFavorite={ toggleFavorite }
+            posts={ state.posts } 
+            favorites={ state.favorites }
+          />
+      </Suspense>
     </Container>
+    
   )
 }
 
