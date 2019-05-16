@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faUserCircle, faBars, faTimes, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faBars, faTimes, faHeart, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Home from './pages/Home.js'
 import { StateProvider } from './context/GlobalState'
@@ -12,7 +12,8 @@ import { StateProvider } from './context/GlobalState'
 const App = props => {
   
   const initialState = {
-    posts: []
+    posts: [],
+    favorites: []
   }
 
   const AbsoluteWrapper = styled.div`
@@ -33,7 +34,8 @@ const App = props => {
     faBars,
     faGithubAlt,
     faTimes,
-    faHeart
+    faHeart, 
+    faSpinner
   )
   // Main reducer runs everytime dispatch() is called   
   const reducer = ( state, action ) => {
@@ -43,7 +45,17 @@ const App = props => {
          ...state,
          posts: action.payload
        }
-      default: 
+      case 'addFav':
+        return {
+          ...state, 
+          favorites: [ ...state.favorites, action.payload ]
+        }
+      case 'removeFav':
+        return {
+          ...state,
+          favorites: action.payload
+        }
+      default: // invalid action
        return state
     }
   }
