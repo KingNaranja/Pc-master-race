@@ -35,3 +35,13 @@ This app was created with `create-react-app`
 Install dependencies with `npm install`
 
 Run the development server with `npm start`
+
+## To Do 
+
+* Create Favorites page 
+* Split main reducer into multiple reducers 
+* Abstract post fetching logic into a custom Hook 
+* Manage app theme in global state 
+
+
+

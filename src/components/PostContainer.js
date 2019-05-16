@@ -66,7 +66,6 @@ function PostContainer() {
       payload: post
     }
     if ( postInFavorites ) {
-      console.log('remove fav')
       // remove unfavorited post from array
       const favoritesWithoutPost = state.favorites.filter( fav => fav.id !== post.id )
       // dispatch updated favorites
@@ -75,7 +74,6 @@ function PostContainer() {
         payload: favoritesWithoutPost
       }
     }
-    console.log(postInFavorites)
     dispatch( actionObj )
     
   }
