@@ -12,7 +12,7 @@ Understanding how data flows through components has been the most interesting pa
 
 ### Context
 The Context API provides a way to pass data through the component tree without having to manually pass them down at each level.
-While this can't replace how useful *Redux* and Redux middleware is, *you actually don’t really need to install any external libraries for state management*. 
+While this can't replace how useful *Redux* and Redux middleware is, you *don’t need to install any external libraries for state management*. 
 
 PCMR makes use of the `useState`, `useEffect` and `useReducer` React Hooks to share stateful logic between components.
 
@@ -39,9 +39,11 @@ Run the development server with `npm start`
 ## To Do 
 
 * Create Favorites page 
-* Split main reducer into multiple reducers 
-* Abstract post fetching logic into a custom Hook 
+* *Split main reducer into multiple reducers*
+* Move initial state and reducers into separate files
+* Replace placeholder JSON 
 * Manage app theme in global state 
+
 
 
 
