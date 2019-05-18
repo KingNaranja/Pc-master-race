@@ -7,7 +7,9 @@ import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import { faUserCircle, faBars, faTimes, faHeart, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Home from './pages/Home.js'
+import Favorites from './pages/Favorites'
 import { StateProvider } from './context/GlobalState'
+
 
 const App = props => {
   
@@ -70,6 +72,8 @@ const App = props => {
             {/* Routes */}
             <Switch>
               <Route  exact path="/" component={Home} />
+              <Route  path="/favorites" component={Favorites} />
+
             </Switch>
           </Main>
         </AbsoluteWrapper>

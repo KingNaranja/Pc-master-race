@@ -1,11 +1,13 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components'
 import { useStateValue } from './../context/GlobalState'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useHttp } from './../hooks/http'
+
 // wait for PostList to load before rendering
 const PostList = lazy( () => import('./PostList'))
 
-function PostContainer() {
+const PostContainer = props => {
    
   const Container = styled.div`
     margin: 1em;
@@ -31,29 +33,7 @@ function PostContainer() {
 
 
   `
-  const [ isLoading, setIsLoading ] = useState(true)
   const [ state, dispatch ] = useStateValue()
-
-  useEffect( () => {
-    console.log('component did mount')
-    console.log('fetching posts')
-    fetch('https://jsonplaceholder.typicode.com/posts/')
-      .then( response => response.json() )
-      .then( posts => {
-        // dispatch an action
-        dispatch({
-          type: 'addPosts', 
-          payload: posts
-        })
-        // load posts 
-        console.log('posts have loaded')
-        setIsLoading(false)
-        
-      })
-    
-  }, [dispatch])
-
-  
 
   const toggleFavorite = post => {
     // check if post exists in favorites array
@@ -80,12 +60,23 @@ function PostContainer() {
 
   const loading = <FontAwesomeIcon className='load' icon='spinner' spin size='4x' />
 
+  // fetch posts for this page 
+  let posts
+  const [ isLoading, fetchedPosts ] = useHttp( 'https://jsonplaceholder.typicode.com/posts/' )
+  
+  // filter which posts are passed to 
+  // PostList using props
+  posts = props.favPage ? 
+    state.favorites :
+    fetchedPosts
+
+
   return (
     <Container >
       <Suspense fallback={ loading } >
           <PostList 
             toggleFavorite={ toggleFavorite }
-            posts={ state.posts } 
+            posts={ posts } 
             favorites={ state.favorites }
           />
       </Suspense>

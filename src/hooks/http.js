@@ -21,7 +21,7 @@ export const useHttp = url => {
         setIsLoading(false)
       })
       // only re-run if dispatch object changes 
-  }, [dispatch])
+  }, [dispatch, url])
 
   return [ isLoading, state.posts ] 
 }

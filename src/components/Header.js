@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from './../images/logo.png'
 import NavBarContainer from './NavBarContainer';
+import { Link } from 'react-router-dom'
 // import  NavBarContainer  from './NavBarContainer'
 
 
@@ -17,11 +18,12 @@ const Header = props  => {
     align-items: center;
     display: flex;
     padding: 0 20px;
-    /* animation-name: descend;
-    animation-duration: 2s; */
     animation: descend 1s ease-in-out ;
+    .link{
+      max-width:50%;
+    }
     .logo{
-      width: 50%;
+      max-width: 100%;
       height: auto;
     }
     @keyframes descend {
@@ -38,9 +40,11 @@ const Header = props  => {
 
   return (
     <MainHeader>
-      <img className='logo' src={ logo } alt="PCMASTERRACE" />
-      
-      <NavBarContainer/>
+      <Link to='/' className='link' >
+        <img className='logo' src={ logo } alt="PCMASTERRACE" />
+      </Link>
+
+      <NavBarContainer />
     </MainHeader>
 )}
 
