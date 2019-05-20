@@ -9,7 +9,7 @@ import Header from './components/Header'
 import Home from './pages/Home.js'
 import Favorites from './pages/Favorites'
 import { StateProvider } from './context/GlobalState'
-
+import mainReducer from './context/reducers/mainReducer'
 
 const App = props => {
   
@@ -39,32 +39,10 @@ const App = props => {
     faHeart, 
     faSpinner
   )
-  // Main reducer runs everytime dispatch() is called   
-  const reducer = ( state, action ) => {
-    switch (action.type) {
-      case 'addPosts':
-       return {
-         ...state,
-         posts: action.payload
-       }
-      case 'addFav':
-        return {
-          ...state, 
-          favorites: [ ...state.favorites, action.payload ]
-        }
-      case 'removeFav':
-        return {
-          ...state,
-          favorites: action.payload
-        }
-      default: // invalid action
-       return state
-    }
-  }
 
   return (
     <Router>
-      <StateProvider initialState={ initialState } reducer={ reducer }>
+      <StateProvider initialState={ initialState } reducer={ mainReducer }>
         <AbsoluteWrapper className="App">
           <Header></Header>
 

@@ -7,6 +7,7 @@ export const useHttp = url => {
 
   useEffect( () => {
     console.log('fetching posts')
+  
     setIsLoading(true)
     fetch( url )
       .then( response => response.json() )
@@ -19,9 +20,7 @@ export const useHttp = url => {
         // load posts 
         console.log('posts have loaded')
         setIsLoading(false)
-      })
-      // only re-run if dispatch object changes 
-  }, [dispatch, url])
-
+      }) 
+  }, [ dispatch, url ])
   return [ isLoading, state.posts ] 
 }
