@@ -9,7 +9,7 @@ export const useHttp = (page='pcmr') => {
     console.log('fetching posts')
   
     // setIsLoading(true)
-    fetch( `http://localhost:8080/${page}` ) // development 
+    fetch( `https://pcmr-api.herokuapp.com/${page}` )
       .then( response => response.json() )
       .then( posts => {
         // dispatch an action
