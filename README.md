@@ -1,6 +1,8 @@
 # PC MASTER RACE - [Live Demo](https://modest-cray-5c4ae9.netlify.com/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e63d49ce-78e7-46b1-91ea-bff43a7de95c/deploy-status)](https://app.netlify.com/sites/modest-cray-5c4ae9/deploys)
 
+[PCMR API](https://github.com/KingNaranja/pcmr-api)
+
 ## Computer Enthusiast's Hub 
 PCMR is a web app built with React that keeps you up to date on everything PCMR. 
 
