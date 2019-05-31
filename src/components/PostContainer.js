@@ -58,19 +58,16 @@ const PostContainer = props => {
     
   }
 
-  const loading = <FontAwesomeIcon className='load' icon='spinner' spin size='4x' />
-
+  const loading = <FontAwesomeIcon classname='load' icon='spinner' spin size='4x' />
+  const { page, fav } = props
   // fetch posts for this page 
   let posts
-  const [ isLoading, fetchedPosts ] = useHttp( 'https://jsonplaceholder.typicode.com/posts/' )
+  const [ currentFavs, fetchedPosts ] = useHttp( page )
   
-  // filter which posts are passed to 
-  // PostList using props
-  posts = props.favPage ? 
-    state.favorites :
-    fetchedPosts
-
-
+  posts = fav ?
+    currentFavs :
+    fetchedPosts 
+     
   return (
     <Container >
       <Suspense fallback={ loading } >

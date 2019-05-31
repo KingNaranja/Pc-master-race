@@ -9,10 +9,12 @@ function Home() {
   // inherit style from Wrapper 
   const Wrapper = styled(PageWrapper)``
 
+  const page = 'pcmr'
+
   return (
     <Wrapper>
       <Toolbar/>
-      <PostContainer/>
+      <PostContainer page={page} />
     </Wrapper>
   )
 }

@@ -7,16 +7,11 @@ import { PageWrapper } from './../components/PageWrapper'
  const Favorites = props => {
 
   const Wrapper = styled(PageWrapper)``
-  console.log('Favorites Page has loaded')
-  console.log(props)
-  
-  const favPage = useRef(true)
-
   
   return (
     <Wrapper>
       <Toolbar/>
-      <PostContainer favPage={favPage} />
+      <PostContainer fav />
     </Wrapper>
   )
 }
