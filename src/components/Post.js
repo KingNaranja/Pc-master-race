@@ -41,14 +41,22 @@ const Post = props => {
         max-height: 240px;
       }
     }
+    .title {
+      text-decoration: none;
+      color: #000000;
+      &:hover {
+        color: #DCAF5B;
+      }
+    }
+    
 
   `
   const { toggleFavorite, data, favorites } = props
   
   return (
     <PostCard>
-      <div className="main">
-        <h3><a href={`https://www.reddit.com${data.link}`}>{data.title}</a></h3>
+      <div>
+        <h3><a className='title' href={`https://www.reddit.com${data.link}`}>{data.title}</a></h3>
         <div className="footer">
           <FontAwesomeIcon  
             className={ favorites.find(fav => fav.id === data.id) ? 'fav' : 'unfav' } icon='heart' 
