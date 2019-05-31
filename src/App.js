@@ -8,6 +8,9 @@ import { faUserCircle, faBars, faTimes, faHeart, faSpinner } from '@fortawesome/
 import Header from './components/Header'
 import Home from './pages/Home.js'
 import Favorites from './pages/Favorites'
+import PcGaming from './pages/PcGaming'
+import PcBuild from './pages/PcBuild'
+import PcSales from './pages/Sales'
 import { StateProvider } from './context/GlobalState'
 import mainReducer from './context/reducers/mainReducer'
 
@@ -50,6 +53,9 @@ const App = props => {
             {/* Routes */}
             <Switch>
               <Route  exact path="/" component={Home} />
+              <Route  exact path="/pcgaming" component={PcGaming} />
+              <Route  exact path="/buildapc" component={PcBuild} />
+              <Route  exact path="/buildapc-sales" component={PcSales} />
               <Route  path="/favorites" component={Favorites} />
 
             </Switch>
