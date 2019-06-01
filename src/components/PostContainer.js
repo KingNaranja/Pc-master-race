@@ -10,13 +10,11 @@ const PostList = lazy( () => import('./PostList'))
 const PostContainer = props => {
    
   const Container = styled.div`
-    margin: 1em;
+    margin: .5em;
     border: solid #000000;
     border-radius: 1vh;
-    overflow-y: scroll;
     min-width: 40vw;
     height: 100%;
-    /* padding: 10vh; */
     .load {
       justify-self: center;
       align-self: center;

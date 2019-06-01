@@ -11,7 +11,6 @@ const Toolbar = () => {
     margin: 1em;
     text-align: center;
     padding: 1.5em;
-    transition: width 100ms ease;
     .info {
       font-size: calc(1rem + .5vw);
       font-weight: 600;
