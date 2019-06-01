@@ -53,9 +53,9 @@ const App = props => {
             {/* Routes */}
             <Switch>
               <Route  exact path="/" component={Home} />
-              <Route  exact path="/pcgaming" component={PcGaming} />
-              <Route  exact path="/buildapc" component={PcBuild} />
-              <Route  exact path="/buildapc-sales" component={PcSales} />
+              <Route  path="/pcgaming" component={PcGaming} />
+              <Route  path="/buildapc" component={PcBuild} />
+              <Route  path="/buildapc-sales" component={PcSales} />
               <Route  path="/favorites" component={Favorites} />
 
             </Switch>
