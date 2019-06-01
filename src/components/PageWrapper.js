@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const PageWrapper = styled.div`
   display: grid;
-  grid-template-rows: 75vw 75%;
+  grid-template-rows: 60vw 75%;
   grid-column-gap: 1px;
   grid-row-gap: 1px;
   justify-items: stretch;
