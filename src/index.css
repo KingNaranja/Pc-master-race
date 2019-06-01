@@ -17,7 +17,8 @@ code {
 }
 
 html, body, #root, #root>div {
-  overflow-x: hidden;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
   height: 100vh;
   margin: 0;
 }

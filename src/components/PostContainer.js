@@ -11,8 +11,6 @@ const PostContainer = props => {
    
   const Container = styled.div`
     margin: .5em;
-    border: solid #000000;
-    border-radius: 1vh;
     min-width: 40vw;
     height: 100%;
     .load {
