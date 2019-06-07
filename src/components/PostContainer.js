@@ -54,7 +54,7 @@ const PostContainer = props => {
     
   }
 
-  const loading = <FontAwesomeIcon classname='load' icon='spinner' spin size='4x' />
+  const loading = <FontAwesomeIcon style={{margin:"50% 50%"}} className='load' icon='spinner' spin size='4x' />
   const { page, fav } = props
   // fetch posts for this page 
   let posts
@@ -65,15 +65,16 @@ const PostContainer = props => {
     fetchedPosts 
      
   return (
-    <Container >
-      <Suspense fallback={ loading } >
-          <PostList 
-            toggleFavorite={ toggleFavorite }
-            posts={ posts } 
-            favorites={ state.favorites }
-          />
-      </Suspense>
-    </Container>
+    <Suspense fallback={ (loading) } >
+      <Container >
+            <PostList 
+              toggleFavorite={ toggleFavorite }
+              posts={ posts } 
+              favorites={ state.favorites }
+            />
+      </Container>
+    </Suspense>
+
     
   )
 }
