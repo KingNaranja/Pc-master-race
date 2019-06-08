@@ -13,6 +13,7 @@ import PcBuild from './pages/PcBuild'
 import PcSales from './pages/Sales'
 import { StateProvider } from './context/GlobalState'
 import mainReducer from './context/reducers/mainReducer'
+import AddToHomescreen from 'react-add-to-homescreen'
 
 const App = props => {
   
@@ -43,6 +44,13 @@ const App = props => {
     faSpinner
   )
 
+  const handleAddToHomescreenClick = () => {
+    alert(`
+      1. Open Share menu
+      2. Tap on "Add to Home Screen" button`);
+  }
+
+
   return (
     <Router>
       <StateProvider initialState={ initialState } reducer={ mainReducer }>
@@ -57,8 +65,12 @@ const App = props => {
               <Route  path="/buildapc" component={PcBuild} />
               <Route  path="/buildapc-sales" component={PcSales} />
               <Route  path="/favorites" component={Favorites} />
-
             </Switch>
+
+            <AddToHomescreen 
+              onAddToHomescreenClick={handleAddToHomescreenClick} 
+              icon={ 'https://img.icons8.com/bubbles/100/000000/touchscreen-smartphone.png' } 
+            />
           </Main>
         </AbsoluteWrapper>
       </StateProvider>
