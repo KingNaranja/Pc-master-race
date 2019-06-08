@@ -18,12 +18,14 @@ const SideNav = props => {
     .menu-links {
       display:flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 10vh;
+      justify-items: center;
+      justify-content: space-around;
+      align-content: space-around;
       a {
         color: white;
         text-decoration: none;
+        text-align: center;
+        margin: 5vh;
       }
       a:hover {
         color: gold;
@@ -42,6 +44,9 @@ const SideNav = props => {
       transition: transform 500ms;
       transition-property: font-size;
       transition-timing-function: ease-in-out;
+      .menu-links > a  {
+        margin: 3vh;
+      }
     }
     
   ` 
@@ -61,12 +66,6 @@ const SideNav = props => {
         <Link to='/buildapc-sales' onClick={props.toggleNav}>
           <h2>PC Sales</h2>
         </Link>
-        <a 
-          href="https://teespring.com/stores/officialpcmr"  
-          rel="noopener noreferrer" 
-          target='_blank'
-          >Store
-        </a>
       </nav>
     </Menu>
   )

@@ -65,13 +65,13 @@ const PostContainer = props => {
     fetchedPosts 
      
   return (
-    <Suspense fallback={ (loading) } >
-      <Container >
-            <PostList 
-              toggleFavorite={ toggleFavorite }
-              posts={ posts } 
-              favorites={ state.favorites }
-            />
+    <Suspense fallback={ loading } >
+      <Container>
+        <PostList
+          toggleFavorite={ toggleFavorite }
+          posts={ posts }
+          favorites={ state.favorites }
+        />
       </Container>
     </Suspense>
 
