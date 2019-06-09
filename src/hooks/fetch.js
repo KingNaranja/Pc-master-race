@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { useStateValue } from './../context/GlobalState'
+import { useStateValue } from '../context/GlobalState'
 
-export const useHttp = (page='pcmr') => {
+export const useFetch = (page='pcmr') => {
   // const [ isLoading, setIsLoading ] = useState(false)
   const [ state, dispatch ] = useStateValue()
 
@@ -22,5 +22,5 @@ export const useHttp = (page='pcmr') => {
         // setIsLoading(false)
       }) 
   }, [ dispatch, page ])
-  return [ state.favorites, state.posts ] 
+  return  state.posts  
 }

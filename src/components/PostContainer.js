@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import styled from 'styled-components'
 import { useStateValue } from './../context/GlobalState'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useHttp } from './../hooks/http'
+import { useFetch } from '../hooks/fetch'
+import { useLocalStorage } from '../hooks/localStorage'
 
 // wait for PostList to load before rendering
 const PostList = lazy( () => import('./PostList'))
@@ -31,7 +32,7 @@ const PostContainer = props => {
   `
   const [ state, dispatch ] = useStateValue()
 
-  const toggleFavorite = post => {
+  const toggleFavorite = async post => {
     // check if post exists in favorites array
     // store result as boolean
     const postInFavorites = state.favorites.includes(post)
@@ -55,14 +56,19 @@ const PostContainer = props => {
   }
 
   const loading = <FontAwesomeIcon style={{margin:"50% 50%"}} className='load' icon='spinner' spin size='4x' />
+
   const { page, fav } = props
   // fetch posts for this page 
   let posts
-  const [ currentFavs, fetchedPosts ] = useHttp( page )
+  const fetchedPosts = useFetch(page)
+  const [ localFavs, setlocalFavs ] = useLocalStorage('favorites', state.favorites)
   
-  posts = fav ?
-    currentFavs :
-    fetchedPosts 
+  posts = fav ? localFavs : fetchedPosts 
+
+  // sync favorite state with local storage
+  useEffect( () => {
+    setlocalFavs(state.favorites)
+  })
      
   return (
     <Suspense fallback={ loading } >
