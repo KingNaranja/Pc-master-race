@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Dropdown, Button, Icon } from 'rbx'
 
 const Post = props => {
 
@@ -15,7 +16,8 @@ const Post = props => {
       display: flex;
       flex-direction: row;
       text-align: center;
-      justify-content: flex-start; 
+      justify-content: flex-start;
+      background-color: inherit; 
       svg {
         margin: 0 .5em;
         cursor: pointer;
@@ -23,13 +25,7 @@ const Post = props => {
 
     }
     :hover {
-      background-image: radial-gradient(white, whitesmoke);
-    }
-    .unfav  {
-      color: grey;
-    }
-    .fav  {
-      color: gold;
+      /* background-image: radial-gradient(white, whitesmoke); */
     }
     .thumbnail {
       max-width: 20%;
@@ -48,8 +44,6 @@ const Post = props => {
         color: #DCAF5B;
       }
     }
-    
-
   `
   const { toggleFavorite, data, favorites } = props
   
@@ -58,13 +52,25 @@ const Post = props => {
       <div>
         <h3><a className='title' href={`https://www.reddit.com${data.link}`}>{data.title}</a></h3>
         <div className="footer">
-          <FontAwesomeIcon  
-            className={ favorites.find(fav => fav.id === data.id) ? 'fav' : 'unfav' } icon='heart' 
-            size='2x' 
-            onClick={ () => 
-              toggleFavorite(data)
-            }
-          />
+          <Dropdown  className='drop' hoverable>
+            <Dropdown.Trigger>
+              <Button>
+                <Icon size="smal">
+                  <FontAwesomeIcon icon='ellipsis-h' size='sm' />
+                </Icon>
+              </Button>
+            </Dropdown.Trigger>
+            <Dropdown.Menu>
+              <Dropdown.Content
+                onClick={ () => 
+                  toggleFavorite(data)
+                }>
+                <Dropdown.Item>
+                  { favorites.find(fav => fav.id === data.id) ? 'Remove from Favorites' :'Add to Favorites' }</Dropdown.Item>
+                <Dropdown.Item>Comments</Dropdown.Item>
+              </Dropdown.Content>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
       {

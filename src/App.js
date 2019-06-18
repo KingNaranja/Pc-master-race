@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // icons 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faUserCircle, faBars, faTimes, faHeart, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faBars, faTimes, faHeart, faSpinner, faEllipsisH, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Home from './pages/Home.js'
 import Favorites from './pages/Favorites'
@@ -15,6 +15,7 @@ import { StateProvider } from './context/GlobalState'
 import mainReducer from './context/reducers/mainReducer'
 import AddToHomescreen from 'react-add-to-homescreen'
 
+
 const App = props => {
   
   const initialState = {
@@ -24,7 +25,6 @@ const App = props => {
 
   const AbsoluteWrapper = styled.div`
     position: absolute;
-    
   `
   // extend style from AbsoluteWrapper
   const Main = styled(AbsoluteWrapper)`
@@ -41,7 +41,9 @@ const App = props => {
     faGithubAlt,
     faTimes,
     faHeart, 
-    faSpinner
+    faSpinner,
+    faEllipsisH,
+    faMobileAlt
   )
 
   const handleAddToHomescreenClick = () => {
@@ -68,6 +70,7 @@ const App = props => {
             </Switch>
 
             <AddToHomescreen 
+              className='pwa'
               onAddToHomescreenClick={handleAddToHomescreenClick} 
               icon={ 'https://img.icons8.com/bubbles/100/000000/touchscreen-smartphone.png' } 
             />

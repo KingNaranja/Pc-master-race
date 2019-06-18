@@ -7,6 +7,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.8.2",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "rbx": "^2.2.0",
     "react": "^16.8.6",
     "react-add-to-homescreen": "^1.1.0",
     "react-dom": "^16.8.6",
