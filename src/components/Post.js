@@ -67,7 +67,7 @@ const Post = props => {
                 }>
                 <Dropdown.Item>
                   { favorites.find(fav => fav.id === data.id) ? 'Remove from Favorites' :'Add to Favorites' }</Dropdown.Item>
-                <Dropdown.Item>Comments</Dropdown.Item>
+                {/* <Dropdown.Item>Comments</Dropdown.Item> */}
               </Dropdown.Content>
             </Dropdown.Menu>
           </Dropdown>

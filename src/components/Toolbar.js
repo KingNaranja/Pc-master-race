@@ -16,7 +16,9 @@ const Toolbar = () => {
       font-weight: 600;
     }
     @media screen and (min-width: 768px) {
-      margin-top: 5em;
+      top: 10em;
+      position:sticky;
+      margin: 5em;
       height: 30vw;
       width: 30%;
     

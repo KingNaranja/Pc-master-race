@@ -11,7 +11,10 @@ import { Link } from 'react-router-dom'
 const Header = props  => {
 
   const MainHeader = styled.header`
-    position: relative;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    /* overflow-y: hidden; */
     height: 10vh;
     width: 100%;
     background-color: #23242C;
@@ -25,6 +28,7 @@ const Header = props  => {
     .logo{
       max-width: 100%;
       height: auto;
+      overflow-y:hidden;
     }
     @keyframes descend {
       from{transform: translateY(-10vh) }
@@ -35,7 +39,9 @@ const Header = props  => {
       top: 0;
       left: 0;
     }
-    
+    @media only screen and (min-width: 768px) {
+      overflow-y: hidden;
+    }
   `
 
   return (

@@ -11,7 +11,7 @@ const Menu = styled.div`
   background-color: #23242C;
   /* transition: transform .3s cubic-bezier(0, .52, 0, 1); */
   overflow: scroll;
-  z-index: 1000;
+  z-index: 3;
   animation: slide-left 300ms cubic-bezier(.36,.08,.49,.99) ;
   .menu-links {
     height: 90vh;

@@ -14,7 +14,6 @@ const NavBarContainer = props  => {
     justify-content: space-around;
     padding: 0 1em;
     .icon:hover {
-    height: calc(100% + 50px);
     color: gold;
     }
     svg {
@@ -29,11 +28,8 @@ const NavBarContainer = props  => {
 
   return (
     <Nav>
-      <a href="https://github.com/KingNaranja/pc-master-race">
-        <FontAwesomeIcon size='2x' className='icon' icon={[ 'fab', 'github' ]} />
-      </a>
       <Link to='/favorites'>
-        <FontAwesomeIcon size='2x' className='icon' icon='heart' />
+        <FontAwesomeIcon size='2x' className='icon heart' icon='heart' />
       </Link>
       <FontAwesomeIcon size='2x' className='icon' icon='bars' onClick={toggleSideNav}/>
       {
